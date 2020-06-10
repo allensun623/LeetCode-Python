@@ -1,31 +1,30 @@
-"""
-Return Value from bool()
+import pysnooper
 
-The bool() returns:
+@pysnooper.snoop()
+def test():
+    digits = [9]
+    plus = True
+    new_digits = digits
+    l_digits = len(digits) - 1
+    for i, x in enumerate(digits): 
+        if plus:
+            if digits[~i] == 9:
+                new_digits.append(0)
+                if i == l_digits:
+                    new_digits.append(1)
+                    break
+            else:
+                new_digits.append((digits[~i]+1))
+                plus = False
+            
+        else:
+            new_digits.append(digits[~i])
+    
+    new_digits.reverse()
+    print(new_digits)
 
-False if the value is omitted or false True if the value is true
+def main():
+    test()
 
-The following values are considered false in Python:
-
-None
-
-False
-
-Zero of any numeric type. For example, 0, 0.0, 0j
-
-Empty sequence. For example, (), [], ''.
-
-Empty mapping. For example, {}
-
-objects of Classes which has bool() or len() method which returns 0 or False
-
-All other values except these values are considered true.
-
-"""
-
-
-
-n = 3
-while n:
-    print(n)
-    n -= 1
+if __name__ == '__main__':
+    main()
