@@ -52,8 +52,11 @@ def broadcast(x, y) -> bool:
     for i in range(n):
         for j in range(i + 1, n):
             if hypotenuse(arr[i], arr[j]) <= 10:
+                print(arr[i], arr[j])
                 uf.union(i, j)
+            print(uf.parent)
 
+    print(uf.parent)
     return uf.connected(x, y)
 
 
