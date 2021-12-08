@@ -48,18 +48,19 @@ def store_log_files(total: int, logs: list) -> list:
     print(logs)
     for i, (f, idx) in enumerate(logs):
         if f > avg:
-          break
+            break
         total -= f
         res[idx] = f
         avg = total // (n - i - 1)
-            # for j in range(i, n):
-            #     res[logs[j][1]] = avg
-            # break
-    for i in range(n):
-      if res[i] == 0:
-        res[i] = avg
+        # for j in range(i, n):
+        #     res[logs[j][1]] = avg
+        # break
+    # for i in range(n):
+    #     if res[i] == 0:
+    #         res[i] = avg
 
-    return res
+    # return res
+    return [res[i] or avg for i in range(n)]
 
 
 print(store_log_files(12, [2, 10, 9, 12, 1]))
