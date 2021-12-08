@@ -11,10 +11,10 @@ class Trie:
     def insert(self, word: str) -> None:
         cur = self.root
         for c in word:
-            if c not in cur.nodes:
-                cur.nodes[c] = TrieNode()
-            cur = cur.nodes[c]
-            # node = node.setdefault(c, TrieNode())
+            # if c not in cur.nodes:
+            #     cur.nodes[c] = TrieNode()
+            # cur = cur.nodes[c]
+            cur = cur.nodes.setdefault(c, TrieNode())
         cur.is_leaf = True
 
     def search(self, word: str) -> bool:
