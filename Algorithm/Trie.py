@@ -32,3 +32,19 @@ class Trie:
                 return False
             cur = cur.nodes[c]
         return True
+
+    def find_prefix(self, word: str) -> bool:
+        '''
+        if lexicon contains a prefix of the word, return the prefix else
+        else return the word
+        '''
+        cur = self.root
+        for i, c in enumerate(word):
+            if cur.is_leaf:
+                return word[:i]
+
+            if c not in cur.nodes:
+                return word
+            cur = cur.nodes[c]
+
+        return word
