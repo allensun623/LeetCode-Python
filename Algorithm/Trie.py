@@ -48,3 +48,13 @@ class Trie:
             cur = cur.nodes[c]
 
         return word
+
+    def longest_common_prefix(self, word: str) -> str:
+        cur = self.root
+        prefix = ''
+        for c in word:
+            if c not in cur.nodes or cur.is_leaf or len(cur.nodes) != 1:
+                break
+            prefix += c
+            cur = cur.nodes[c]
+        return prefix
