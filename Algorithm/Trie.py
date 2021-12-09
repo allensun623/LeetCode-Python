@@ -1,3 +1,22 @@
+'''
+https://zhuanlan.zhihu.com/p/335793141
+https://blog.csdn.net/haolexiao/article/details/69218215
+https://blog.csdn.net/ANNILingMo/article/details/80879910
+https://blog.csdn.net/weixin_43204128/article/details/90633128?spm=1001.2101.3001.6650.1&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link
+https://www.pythonf.cn/read/77082
+https://leetcode-cn.com/problems/implement-trie-prefix-tree/solution/shi-xian-trie-qian-zhui-shu-by-leetcode-ti500/
+
+https://stackoverflow.com/questions/13032116/trie-complexity-and-searching
+Time: O(N)
+Space: O(N*|S|)
+The complexity of creating a trie is O(W*L), 
+where W is the number of words, and L is an average length of the word: 
+you need to perform L lookups on the average for each of the W words in the set.
+
+
+'''
+
+
 class TrieNode:
     def __init__(self):
         self.nodes = {}
