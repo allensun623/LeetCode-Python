@@ -19,8 +19,9 @@ class LRUCache:
     self.cache = {}
     self.head = LinkedNode(0, 0)
     self.tail = LinkedNode(0, 0)
-    self.head.next = self.tail
-    self.tail.prev = self.head
+    self._connect(self.head, self.tail)
+    # self.head.next = self.tail
+    # self.tail.prev = self.head
     
   def get(self, key: int) -> int:
     '''get the value of node by key, if not exists, return -1'''
@@ -44,10 +45,12 @@ class LRUCache:
       
   def _add(self, node) -> None:
     '''add node to the end'''
-    node.prev = self.tail.prev
-    node.next = self.tail
-    self.tail.prev.next = node
-    self.tail.prev = node
+    self._connect(self.tail.prev, node)
+    self._connect(node, self.tail)
+    # node.prev = self.tail.prev
+    # node.next = self.tail
+    # self.tail.prev.next = node
+    # self.tail.prev = node
     self.cache[node.key] = node
     if len(self.cache) > self.capacity:
       self._remove_first()
