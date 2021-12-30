@@ -88,3 +88,10 @@ class LRUCache:
   
   def _connect(self, p: LinkedNode, n: LinkedNode):
     p.next, n.prev = n, p
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+# @lc code=end
+
