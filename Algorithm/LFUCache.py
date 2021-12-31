@@ -17,12 +17,12 @@ class DoubleLinkedList:
     self.tail = Node(0, 0)
     self._connect(self.head, self.tail)
     
-  def put(self, node: Node) -> None:
+  def append(self, node: Node) -> None:
     self._connect(self.tail.prev, node)
     self._connect(node, self.tail)
     self.size += 1
     
-  def remove_node(self, node: Node) -> None:
+  def pop(self, node: Node) -> None:
     self._connect(node.prev, node.next)
     self.size -= 1
   
@@ -83,7 +83,7 @@ class LFUCache:
     '''2. remove target node'''
     node_freq = self._freq_cache[node.freq]
     # remove node from current frequency link, and remove frequency node if it is empty
-    node_freq.remove_node(node)
+    node_freq.pop(node)
     if node_freq.size == 0:
       del self._freq_cache[node.freq]
     self._size -= 1
@@ -101,7 +101,7 @@ class LFUCache:
     else:
       node_freq = self._freq_cache[node.freq]
     # update node in its freq link and freq in freq cache
-    node_freq.put(node)
+    node_freq.append(node)
     self._freq_cache[node.freq] = node_freq
     self._size += 1
     
