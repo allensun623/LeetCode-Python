@@ -1,4 +1,5 @@
 '''
+https://www.1point3acres.com/bbs/thread-841736-1-1.html
 bootingPower = [3, 6, 1, 3, 4]
 processingPower = [2, 1, 3, 4, 5]
 powerMax = 25
@@ -22,7 +23,7 @@ def maxPowerConsumption(bootingPower: list, processingPower: list, powerMax: int
       pq.pop()
     pq.append(j)
     # left pointer moves while power > powerMax
-    while bootingPower[pq[0]] + (total) * (j - i + 1) > powerMax:
+    if bootingPower[pq[0]] + (total) * (j - i + 1) > powerMax:
       total -= processingPower[i]
       i += 1
       while pq and pq[0] < i:
