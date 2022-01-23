@@ -11,21 +11,27 @@ def group(s: str) -> int:
     '0': int(s[0] == '0'),
     '1': int(s[0] == '1'),
   }
+
   res = {
     '0': 0,
     '1': 0,
   }
-  
-  for i in range(1, len(s)):
-    if s[i] == s[i-1]:
-      nums[s[i]] += 1
+  for a, b in zip(s[:-1], s[1:]):
+    if a == b:
+      nums[b] += 1 # increment
     else:
-      nums[s[i]] = 1
-    res[s[i]] = max(res[s[i]], min(nums.values()))
+      nums[b] = 1 # reset
+    res[b] = max(res[b], min(nums.values()))
+  # for i in range(1, len(s)):
+  #   if s[i] == s[i-1]:
+  #     nums[s[i]] += 1
+  #   else:
+  #     nums[s[i]] = 1
+  #   res[s[i]] = max(res[s[i]], min(nums.values()))
 
   return sum(res.values())
 
-print(group('00111000'))
+print(group('00110'))
   
   
   
